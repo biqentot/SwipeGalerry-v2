@@ -405,19 +405,30 @@ class SwipeActivity : AppCompatActivity() {
     }
 
     @Deprecated("Deprecated in Java")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQ_DELETE) {
-            val count = toDelete.size
-            val size = toDelete.sumOf { id -> photos.find { it.id == id }?.sizeBytes ?: 0L }
-            if (resultCode == Activity.RESULT_OK) {
-                Toast.makeText(this,
-                    getString(R.string.toast_done, count, formatSize(size)),
-                    Toast.LENGTH_SHORT).show()
-            }
+override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    super.onActivityResult(requestCode, resultCode, data)
+    if (requestCode == REQ_DELETE) {
+        val count = toDelete.size
+        val size = toDelete.sumOf { id -> photos.find { it.id == id }?.sizeBytes ?: 0L }
+        if (resultCode == Activity.RESULT_OK) {
+            showInfoDialog(count, size)
+        } else {
             finish()
         }
     }
+}
+
+private fun showInfoDialog(count: Int, size: Long) {
+    AlertDialog.Builder(this)
+        .setTitle(getString(R.string.swipe_folder_done))
+        .setMessage(
+            getString(R.string.info_done_discarded, count) + "\n" +
+            getString(R.string.info_done_saved, formatSize(size))
+        )
+        .setCancelable(false)
+        .setPositiveButton(getString(R.string.info_done_button)) { _, _ -> finish() }
+        .show()
+}
 
     private fun showFolderDone() {
         card.setImageDrawable(null)
