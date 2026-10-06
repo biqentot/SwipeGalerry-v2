@@ -109,12 +109,16 @@ class OnboardingActivity : AppCompatActivity() {
         private val emojis = arrayOf("👆", "🗑 ♥", "📁")
 
         override fun onCreateViewHolder(parent: android.view.ViewGroup, viewType: Int): VH {
-            return VH(LinearLayout(parent.context).apply {
-                orientation = LinearLayout.VERTICAL
-                gravity = Gravity.CENTER
-                setPadding(48, 48, 48, 48)
-            })
-        }
+    return VH(LinearLayout(parent.context).apply {
+        layoutParams = android.view.ViewGroup.LayoutParams(
+            android.view.ViewGroup.LayoutParams.MATCH_PARENT,
+            android.view.ViewGroup.LayoutParams.MATCH_PARENT
+        )
+        orientation = LinearLayout.VERTICAL
+        gravity = Gravity.CENTER
+        setPadding(48, 48, 48, 48)
+    })
+}
 
         override fun getItemCount() = 3
 
