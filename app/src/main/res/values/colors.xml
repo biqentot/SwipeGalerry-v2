@@ -3,9 +3,14 @@
     <color name="bg">#121212</color>
     <color name="surface">#1E1E1E</color>
     <color name="surface2">#2A2A2A</color>
+    <color name="divider">#2E2E2E</color>
     <color name="text">#FFFFFF</color>
     <color name="textDim">#999999</color>
+    <color name="textMuted">#666666</color>
     <color name="keep">#1FA971</color>
     <color name="delete">#E5484D</color>
     <color name="accent">#FFFFFF</color>
+    <color name="overlay_keep">#CC1FA971</color>
+    <color name="overlay_delete">#CCE5484D</color>
+    <color name="transparent">#00000000</color>
 </resources>
