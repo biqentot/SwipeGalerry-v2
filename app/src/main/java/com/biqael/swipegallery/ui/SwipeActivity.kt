@@ -263,22 +263,28 @@ class SwipeActivity : AppCompatActivity() {
     }
 
     private fun showCurrent() {
-        updateHeader()
-        if (idx >= photos.size) {
+    updateHeader()
+    if (idx >= photos.size) {
+        atEnd = true
+        if (history.isNotEmpty()) {
+            confirmFinish()
+        } else {
             showFolderDone()
-            return
         }
-        val t = ++token
-        val photo = photos[idx]
-        Glide.with(this).load(photo.uri).into(card)
-        card.translationX = 0f
-        card.rotation = 0f
-        overlayDelete.alpha = 0f
-        overlayKeep.alpha = 0f
-        card.postDelayed({
-            if (t == token) updateHeader()
-        }, 100)
+        return
     }
+    atEnd = false
+    val t = ++token
+    val photo = photos[idx]
+    Glide.with(this).load(photo.uri).into(card)
+    card.translationX = 0f
+    card.rotation = 0f
+    overlayDelete.alpha = 0f
+    overlayKeep.alpha = 0f
+    card.postDelayed({
+        if (t == token) updateHeader()
+    }, 100)
+}
 
     private fun updateHeader() {
         val size = toDelete.sumOf { id -> photos.find { it.id == id }?.sizeBytes ?: 0L }
