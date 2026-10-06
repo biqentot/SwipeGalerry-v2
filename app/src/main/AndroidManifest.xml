@@ -23,6 +23,7 @@
         <activity android:name=".ui.PickerActivity" android:exported="false" />
         <activity android:name=".ui.SwipeActivity" android:exported="false" />
         <activity android:name=".ui.TrashActivity" android:exported="false" />
+        <activity android:name=".ui.PermissionActivity" android:exported="false" />
 
     </application>
 </manifest>
