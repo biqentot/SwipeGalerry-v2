@@ -42,6 +42,7 @@ class SwipeActivity : AppCompatActivity() {
     private var idx = 0
     private var busy = false
     private var token = 0
+    private var atEnd = false
     private var bucketId: String? = null
     private var bucketName: String? = null
 
