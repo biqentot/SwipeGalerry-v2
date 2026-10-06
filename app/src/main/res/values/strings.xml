@@ -1,4 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Swipe Gallery</string>
+
+    <string name="choose_language">Choose Language</string>
+    <string name="lang_id">Indonesia</string>
+    <string name="lang_en">English</string>
+
+    <string name="onb1_title">Selamat Datang di Swipe Galeri</string>
+    <string name="onb1_body">Sortir galeri dengan swipe cepat &amp; menyenangkan</string>
+    <string name="onb2_title">Cara Pakai</string>
+    <string name="onb2_body">Swipe KIRI = buang foto\nSwipe KANAN = simpan foto\n\nFoto yang dibuang masuk Folder Sampah, bisa dikembalikan kapan saja.</string>
+    <string name="onb3_title">Pilih Folder Dulu</string>
+    <string name="onb3_body">Sebelum mulai, pilih folder yang ingin disortir.\n\nBisa dari Internal, SD Card, atau semua.</string>
+    <string name="onb_next">Lanjut</string>
+    <string name="onb_back">Kembali</string>
+    <string name="onb_start">Mulai</string>
+
+    <string name="perm_title">Izin Akses Galeri</string>
+    <string name="perm_body">Swipe Galeri butuh akses ke foto kamu untuk menampilkan &amp; menyortir.\n\nFoto kamu tidak akan dikirim ke mana pun.</string>
+    <string name="perm_button">Izinkan Akses</string>
+    <string name="perm_required">Izin galeri diperlukan</string>
+
+    <string name="picker_tab_internal">Internal</string>
+    <string name="picker_tab_sd">SD Card</string>
+    <string name="picker_tab_all">Semua</string>
+    <string name="picker_loading">Memuat folder...</string>
+    <string name="picker_empty_title">Tidak Ada Foto</string>
+    <string name="picker_empty_body">Belum ada foto di perangkat ini.\nCoba ambil beberapa foto dulu.</string>
+    <string name="picker_sd_empty">SD Card Tidak Ada</string>
+    <string name="picker_sd_empty_body">Perangkat ini tidak memiliki SD Card, atau belum terpasang.</string>
+    <string name="picker_sort_all">Sortir Semua Folder</string>
+    <string name="picker_continue">Lanjutkan</string>
+    <string name="picker_remaining">sisa %1$d foto</string>
+
+    <string name="settings_title">Pengaturan</string>
+    <string name="settings_language">Bahasa</string>
+    <string name="settings_cancel">Batal</string>
+    <string name="settings_apply">Terapkan</string>
+
+    <string name="swipe_finish">Selesai</string>
+    <string name="swipe_delete">DELETE</string>
+    <string name="swipe_undo">UNDO</string>
+    <string name="swipe_keep">KEEP</string>
+    <string name="swipe_buang">BUANG</string>
+    <string name="swipe_simpan">SIMPAN</string>
+    <string name="swipe_photo_count">%1$d foto · %2$s</string>
+    <string name="swipe_folder_done">Folder Selesai</string>
+    <string name="swipe_folder_done_body">Kamu sudah menyortir semua foto di folder ini.</string>
+    <string name="swipe_back_folder">Kembali ke Folder</string>
+
+    <string name="dlg_finish_title">Selesai?</string>
+    <string name="dlg_finish_body">Buang: %1$d foto (%2$s)</string>
+    <string name="dlg_yes">Ya</string>
+    <string name="dlg_batal">Batal</string>
+    <string name="dlg_cancel_all">Batalkan Semua</string>
+    <string name="dlg_continue_swipe">Lanjut Swipe</string>
+    <string name="dlg_exit_title">Keluar dari Swipe?</string>
+    <string name="dlg_exit_body">%1$d foto akan dibatalkan (tidak jadi dihapus)</string>
+
+    <string name="info_done_discarded">Dibuang: %1$d foto</string>
+    <string name="info_done_saved">Dihemat: %1$s</string>
+    <string name="info_done_button">Ke Folder</string>
+
+    <string name="trash_title">Folder Sampah</string>
+    <string name="trash_select">Pilih</string>
+    <string name="trash_select_all">Pilih Semua</string>
+    <string name="trash_cancel_select">Batal</string>
+    <string name="trash_count">%1$d foto · %2$s</string>
+    <string name="trash_empty_title">Folder Sampah Kosong</string>
+    <string name="trash_empty_body">Foto yang kamu buang akan muncul di sini.</string>
+    <string name="trash_restore">Kembalikan</string>
+    <string name="trash_delete">Hapus Permanen</string>
+    <string name="trash_restore_n">Kembalikan %1$d</string>
+    <string name="trash_delete_n">Hapus %1$d</string>
+    <string name="trash_selected_count">Dipilih: %1$d</string>
+
+    <string name="dlg_restore_title">Kembalikan Foto?</string>
+    <string name="dlg_restore_body">%1$d foto akan dikembalikan ke folder asal.</string>
+    <string name="dlg_delete_perm_title">Hapus Permanen?</string>
+    <string name="dlg_delete_perm_body">%1$d foto akan dihapus selamanya.\nTidak bisa dikembalikan.</string>
+    <string name="dlg_empty_trash_title">Kosongkan Sampah?</string>
+    <string name="dlg_empty_trash_body">Semua %1$d foto akan dihapus permanen.</string>
+    <string name="dlg_delete">Hapus</string>
+
+    <string name="toast_restored">%1$d foto dikembalikan</string>
+    <string name="toast_deleted">%1$d foto dihapus</string>
+    <string name="toast_done">Selesai! %1$d foto dibuang · %2$s dihemat</string>
+    <string name="toast_auto_clean">%1$d foto lama dihapus otomatis</string>
+
+    <string name="loading_trash">Memindahkan ke sampah...</string>
+    <string name="loading_restore">Mengembalikan foto...</string>
+
+    <string name="cd_trash">Folder Sampah</string>
+    <string name="cd_settings">Pengaturan</string>
+    <string name="cd_back">Kembali</string>
 </resources>
