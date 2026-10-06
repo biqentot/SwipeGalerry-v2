@@ -333,18 +333,20 @@ class SwipeActivity : AppCompatActivity() {
     }
 
     private fun confirmFinish() {
-        if (history.isEmpty()) {
-            finish()
-            return
-        }
-        val size = toDelete.sumOf { id -> photos.find { it.id == id }?.sizeBytes ?: 0L }
-        AlertDialog.Builder(this)
-            .setTitle(getString(R.string.dlg_finish_title))
-            .setMessage(getString(R.string.dlg_finish_body, toDelete.size, formatSize(size)))
-            .setPositiveButton(getString(R.string.dlg_yes)) { _, _ -> execute() }
-            .setNegativeButton(getString(R.string.dlg_batal), null)
-            .show()
+    if (history.isEmpty()) {
+        finish()
+        return
     }
+    val size = toDelete.sumOf { id -> photos.find { it.id == id }?.sizeBytes ?: 0L }
+    AlertDialog.Builder(this)
+        .setTitle(getString(R.string.dlg_finish_title))
+        .setMessage(getString(R.string.dlg_finish_body, toDelete.size, formatSize(size)))
+        .setPositiveButton(getString(R.string.dlg_yes)) { _, _ -> execute() }
+        .setNegativeButton(getString(R.string.dlg_batal)) { _, _ ->
+            if (atEnd) showFolderDone()
+        }
+        .show()
+}
 
     override fun onBackPressed() {
         if (history.isEmpty()) {
