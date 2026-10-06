@@ -48,36 +48,36 @@ class MediaRepository(private val context: Context) {
     }
 
     suspend fun listFolders(volumeFilter: String?): List<FolderInfo> = withContext(Dispatchers.IO) {
-        val projection = arrayOf(
-            MediaStore.Images.Media.BUCKET_ID,
-            MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
-            MediaStore.Images.Media.VOLUME_NAME,
-            "COUNT(*) AS cnt"
-        )
-        val selection = if (volumeFilter != null)
-            "${MediaStore.Images.Media.VOLUME_NAME} = ?" else null
-        val args = if (volumeFilter != null) arrayOf(volumeFilter) else null
-        val sort = "${MediaStore.Images.Media.BUCKET_DISPLAY_NAME} ASC"
+    val projection = arrayOf(
+        MediaStore.Images.Media.BUCKET_ID,
+        MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
+        MediaStore.Images.Media.VOLUME_NAME
+    )
+    val selection = if (volumeFilter != null)
+        "${MediaStore.Images.Media.VOLUME_NAME} = ?" else null
+    val args = if (volumeFilter != null) arrayOf(volumeFilter) else null
 
-        val result = mutableListOf<FolderInfo>()
-        val cursor = context.contentResolver.query(collection, projection, selection, args, sort)
-        cursor?.use { c ->
-            val idIdx = c.getColumnIndex(MediaStore.Images.Media.BUCKET_ID)
-            val nameIdx = c.getColumnIndex(MediaStore.Images.Media.BUCKET_DISPLAY_NAME)
-            val volIdx = c.getColumnIndex(MediaStore.Images.Media.VOLUME_NAME)
-            val cntIdx = c.getColumnIndex("cnt")
-            while (c.moveToNext()) {
-                if (idIdx < 0) continue
-                val bucketId = c.getString(idIdx) ?: continue
-                val name = if (nameIdx >= 0) c.getString(nameIdx) ?: bucketId else bucketId
-                val vol = if (volIdx >= 0) c.getString(volIdx) ?: "external_primary" else "external_primary"
-                val cnt = if (cntIdx >= 0) c.getInt(cntIdx) else 0
-                result.add(FolderInfo(bucketId, name, cnt, vol))
+    val map = LinkedHashMap<String, FolderInfo>()
+    val cursor = context.contentResolver.query(collection, projection, selection, args, null)
+    cursor?.use { c ->
+        val idIdx = c.getColumnIndex(MediaStore.Images.Media.BUCKET_ID)
+        val nameIdx = c.getColumnIndex(MediaStore.Images.Media.BUCKET_DISPLAY_NAME)
+        val volIdx = c.getColumnIndex(MediaStore.Images.Media.VOLUME_NAME)
+        while (c.moveToNext()) {
+            if (idIdx < 0) continue
+            val bucketId = c.getString(idIdx) ?: continue
+            val name = if (nameIdx >= 0) c.getString(nameIdx) ?: bucketId else bucketId
+            val vol = if (volIdx >= 0) c.getString(volIdx) ?: "external_primary" else "external_primary"
+            val existing = map[bucketId]
+            if (existing == null) {
+                map[bucketId] = FolderInfo(bucketId, name, 1, vol)
+            } else {
+                map[bucketId] = existing.copy(count = existing.count + 1)
             }
         }
-        result
     }
-
+    map.values.sortedBy { it.name.lowercase() }
+}
     suspend fun listPhotos(bucketId: String?): List<PhotoInfo> = withContext(Dispatchers.IO) {
         val projection = arrayOf(
             MediaStore.Images.Media._ID,
