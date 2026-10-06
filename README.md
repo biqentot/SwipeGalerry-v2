@@ -26,3 +26,13 @@ APK otomatis di-build lewat GitHub Actions setiap push ke `main`.
 Download dari tab **Actions** → pilih run terbaru → **Artifacts** → `app-debug`.
 
 ## Struktur
+
+app/src/main/java/com/biqael/swipegallery/
+├── ui/          (Activity)
+├── data/        (Room DB)
+└── util/        (helper)
+
+
+## Lisensi
+
+Personal project.
